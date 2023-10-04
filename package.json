@@ -1,7 +1,6 @@
 {
   "name": "maximez_dropdown",
-  "version": "0.0.1",
-  "main": "src/index.js",
+  "version": "0.0.5",
   "type": "module",
   "publishConfig": {
     "access": "public"
