@@ -1,3 +1,3 @@
 import Dropdown from './src/Dropdown';
 
-module.exports = {Dropdown};
+export {Dropdown};
