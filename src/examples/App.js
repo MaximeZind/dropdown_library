@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropdown from 'maximez_dropdown';
 
-function UseExample() {
+function App() {
   // Define your list of items
   const itemList = [
     { name: 'Item 1', value: 'item1' },
@@ -30,4 +30,4 @@ function UseExample() {
   );
 }
 
-export default UseExample;
+export default App;

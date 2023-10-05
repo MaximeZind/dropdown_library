@@ -4,13 +4,7 @@ The Dropdown component allows you to create customizable dropdown menus for your
 
 ## Prerequisites
 
-- [NodeJS (**version v20.0.0 or higher**)](https://nodejs.org/en/)
-- [npm (**v9.6.4 or higher**)](https://www.npmjs.com/)
-- [eslint (**version 1.4.0 or higher**)](https://eslint.org/)
-- [vite (**version ^4.3.2 or higher**)](https://vitejs.dev/)
 - [react (**version ^18.2.0 or higher**)](https://react.dev/)
-- [react-router-dom (**version ^6.11.2 or higher**)](https://reactrouter.com/en/main)
-- [prop-types (**version ^15.8.1 or higher**)](https://www.npmjs.com/package/prop-types)
 
 ## Installation
 
