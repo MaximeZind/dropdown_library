@@ -20,7 +20,6 @@ import NormalBox from './NormalBox';
  * @param {string} [props.defaultValue] - La valeur par défaut sélectionnée.
  * @param {string} [props.defaultName] - Le nom par défaut sélectionné.
  * @param {function} [props.onChange] - Fonction de rappel appelée lorsque la sélection change.
- * @param {number} props.height - La hauteur de la liste déroulante.
  * @param {number} [props.maxWidth] - La largeur maximale de la liste déroulante.
  * @param {string} [props.labelColor] - Couleur du texte de l'étiquette.
  * @param {string} [props.focusedLabelColor] - Couleur du texte de l'étiquette lorsque la liste est ouverte ou une valeur est sélectionnée.
@@ -35,8 +34,9 @@ import NormalBox from './NormalBox';
  */
 
 
-function Dropdown({ list, label, name, errorMsg, separatedBox, searchBar, defaultValue, defaultName, onChange, height, maxWidth, labelColor, focusedLabelColor, backgroundColor, hoveredBackgroundColor, fontColor, hoveredFontColor, fontFamily, borderBottomColor, boxShadowColor}) {
+function Dropdown({ list, label, name, errorMsg, separatedBox, searchBar, defaultValue, defaultName, onChange, maxWidth, labelColor, focusedLabelColor, backgroundColor, hoveredBackgroundColor, fontColor, hoveredFontColor, fontFamily, borderBottomColor, boxShadowColor }) {
 
+    const height = 40;
     const [isOpen, setIsOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const [dropdownStatus, setDropdownStatus] = useState('closed')
@@ -93,6 +93,8 @@ function Dropdown({ list, label, name, errorMsg, separatedBox, searchBar, defaul
             setDropdownStatus(`opened`);
         }, 300)
     }
+
+    console.log(fontColor);
     return (
         <div className={`${classes.component_container} ${classes[dropdownStatus]}`}
             style={{ maxWidth: `${maxWidth}px` }}
@@ -100,7 +102,7 @@ function Dropdown({ list, label, name, errorMsg, separatedBox, searchBar, defaul
             onMouseLeave={() => setIsHovered(false)}>
             <label className={(isOpen || selectedName !== '') ? `${classes.label} ${classes.focused}` : classes.label}
                 htmlFor={name}
-                style={{color: (isOpen || selectedName !== '') ? focusedLabelColor : labelColor}}
+                style={{ color: (isOpen || selectedName !== '') ? focusedLabelColor : labelColor }}
             >
                 {label}
             </label>
@@ -109,12 +111,18 @@ function Dropdown({ list, label, name, errorMsg, separatedBox, searchBar, defaul
                 <div ref={dropdownMenu}
                     className={separatedBox ? `${classes.dropdown_container} ${classes.separated}` : `${classes.dropdown_container} ${classes.normal}`}
                     style={{
-                        height: !separatedBox ? ((dropdownStatus === `closed`) || (dropdownStatus === `closing`)) ? `${height}px` : `${height * 8}px` : `${height}px`,
+                        height: !separatedBox ? ((dropdownStatus === `closed`) || (dropdownStatus === `closing`)) ? `${height}px` : `${(height * (list.length + 1)) + (list.length * 10) + (searchBar ? height : 0)}px` : `${height}px`,
+                        maxHeight: !separatedBox ? `${(height * 8)}px` : `${height}px`,
                         boxShadow: `0 1px 0 0 ${borderBottomColor}`
                     }}>
                     <div className={classes.dropdown_header} style={{ minHeight: `${height}px` }} onClick={() => isOpen ? handleClose() : handleOpen()}>
                         <span className={classes.selected_item}
-                            style={{ color: fontColor && fontColor }}>{selectedName}</span>
+                            style={{
+                                color: fontColor && fontColor,
+                                paddingLeft: separatedBox ? null : "10px",
+                            }}>
+                            {selectedName}
+                        </span>
                         <span className={classes.dropdown_header_icon} style={{ backgroundColor: ((isHovered || isOpen) && hoveredBackgroundColor) && hoveredBackgroundColor }}>
                             <DropdownArrow transform={isOpen ? 'rotate(180deg)' : ''}
                                 color={fontColor} />
@@ -162,7 +170,6 @@ Dropdown.propTypes = {
     name: PropTypes.string.isRequired,
     errorMsg: PropTypes.string,
     placeholder: PropTypes.string,
-    height: PropTypes.number.isRequired,
     maxWidth: PropTypes.number,
     labelColor: PropTypes.string,
     focusedLabelColor: PropTypes.string,
@@ -173,7 +180,7 @@ Dropdown.propTypes = {
     fontFamily: PropTypes.string,
     borderBottomColor: PropTypes.string,
     boxShadowColor: PropTypes.string,
-    separatedBox: PropTypes.bool.isRequired,
+    separatedBox: PropTypes.bool,
     searchBar: PropTypes.bool,
     defaultValue: PropTypes.oneOfType([
         PropTypes.number,

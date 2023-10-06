@@ -68,13 +68,13 @@
 }
 
 .dropdown_options::-webkit-scrollbar-thumb {
-    background-color: rgb(177, 196, 108, 0.3);
+    background-color: rgb(211, 211, 211, 0.3);
     border-radius: 10px;
 }
 
 .dropdown_options::-webkit-scrollbar-thumb:hover,
 .dropdown_options::-webkit-scrollbar-thumb:active {
-    background-color: rgb(177, 196, 108, 0.6);
+    background-color: rgb(211, 211, 211 0.6);
 }
 
 .dropdown_options span {

@@ -1,4 +1,3 @@
-import Dropdown from './src/Dropdown';
-import App from './src/examples/App';
+import Dropdown from './src/lib/Dropdown';
 
-export {Dropdown, App};
+export {Dropdown};

@@ -25,6 +25,7 @@ import ListItem from './ListItem';
 
 function SeparatedBox({ list, height, backgroundColor, hoveredBackgroundColor, fontColor, hoveredFontColor, fontFamily, handleClick, searchBar }) {
 
+    console.log(fontColor);
     const [newList, setNewList] = useState(list);
 
     // Fonction pour filtrer les options en fonction de l'input
@@ -45,7 +46,8 @@ function SeparatedBox({ list, height, backgroundColor, hoveredBackgroundColor, f
                 {searchBar === true ?
                     <div className={classes.filter_items} style={{ minHeight: `${height}px`, backgroundColor: hoveredBackgroundColor && hoveredBackgroundColor }}>
                         <span className={classes.filter_items_icon}>
-                            <MagnifyingGlass />
+                            <MagnifyingGlass 
+                            color={fontColor}/>
                         </span>
                         <input name='search_field' 
                         style={{
@@ -59,7 +61,8 @@ function SeparatedBox({ list, height, backgroundColor, hoveredBackgroundColor, f
                 <div className={classes.dropdown_options}
                     style={{
                         maxHeight: `${height * 6}px`,
-                        backgroundColor: backgroundColor
+                        backgroundColor: backgroundColor,
+                        '&::WebkitScrollbarThumb': { backgroundColor: '#FFFFFF' } 
                     }}>
                     {newList.map((item, index) => {
                         return <ListItem key={item.name ? item.name : index}

@@ -35,8 +35,7 @@ function NormalBox({ list, height, backgroundColor, hoveredBackgroundColor, font
     return (
         <div className={classes.dropdown_content}
             style={{
-                maxHeight: `${height * 7}px`,
-                minHeight: `${height * 7}px`,
+                maxHeight: `${height*7}px`,
                 backgroundColor: backgroundColor && backgroundColor,
             }}>
             {searchBar === true ?
@@ -57,11 +56,7 @@ function NormalBox({ list, height, backgroundColor, hoveredBackgroundColor, font
                         placeholder='Search...'
                         onChange={handleFilter} />
                 </div> : null}
-            <div className={classes.dropdown_options}
-                style={{
-                    minHeight: `${height * 6}px`,
-                    backgroundColor: backgroundColor && backgroundColor,
-                }}>
+            <div className={classes.dropdown_options}>
                 {newList.map((item, index) => {
                     return <ListItem key={item.name ? item.name : index}
                         item={item}
