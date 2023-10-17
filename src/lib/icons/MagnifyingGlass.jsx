@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function MagnifyingGlass({ color }) {
-    console.log(color);
+
     return (
         <svg 
         xmlns="http://www.w3.org/2000/svg" 

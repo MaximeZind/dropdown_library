@@ -25,7 +25,6 @@ import ListItem from './ListItem';
 
 function SeparatedBox({ list, height, backgroundColor, hoveredBackgroundColor, fontColor, hoveredFontColor, fontFamily, handleClick, searchBar }) {
 
-    console.log(fontColor);
     const [newList, setNewList] = useState(list);
 
     // Fonction pour filtrer les options en fonction de l'input
