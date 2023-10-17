@@ -98,11 +98,11 @@ function Dropdown({ list, label, name, errorMsg, separatedBox, searchBar, defaul
         <div className={`${classes.component_container} ${classes[dropdownStatus]}`}
             style={{ maxWidth: `${maxWidth}px` }}
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            onClick={() => isOpen ? handleClose() : handleOpen()}>
+            onMouseLeave={() => setIsHovered(false)}>
             <label className={(isOpen || selectedName !== '') ? `${classes.label} ${classes.focused}` : classes.label}
                 htmlFor={name}
                 style={{ color: (isOpen || selectedName !== '') ? focusedLabelColor : labelColor }}
+                onClick={() => (isOpen || selectedName !== '') && handleOpen()}
             >
                 {label}
             </label>
@@ -115,7 +115,11 @@ function Dropdown({ list, label, name, errorMsg, separatedBox, searchBar, defaul
                         maxHeight: !separatedBox ? `${(height * 8)}px` : `${height}px`,
                         boxShadow: `0 1px 0 0 ${borderBottomColor}`
                     }}>
-                    <div className={classes.dropdown_header} style={{ minHeight: `${height}px` }} >
+                    <div className={classes.dropdown_header}
+                        style={{
+                            minHeight: `${height}px`
+                        }}
+                        onClick={() => isOpen ? handleClose() : handleOpen()}>
                         <span className={classes.selected_item}
                             style={{
                                 color: fontColor && fontColor,
