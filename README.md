@@ -20,7 +20,7 @@ You can install this component via npm:
 
 `import { Dropdown } from 'maximez_dropdown';`
 
-# Include the Modal componentn in your JSX
+# Include the Dropdown componentn in your JSX
 
 ```      <Dropdown
         list={itemList}
